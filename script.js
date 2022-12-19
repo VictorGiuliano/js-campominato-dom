@@ -16,7 +16,7 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
  const total = col * rows;
  const point = [];
  let j = 1;
- let blacklist =[];
+
 
 function createCell(x){
     let cell;
@@ -26,17 +26,21 @@ function createCell(x){
     return cell;
 }
 
-function getRandomNumber(min, max, blackList) {
-    let randomNumber;
-    do{
-        randomNumber = Math.floor(Math.random() * (max + 1 - min)) + min;
-    }while(blackList.includes(randomNumber));
-    return randomNumber;
-}
-for(i=0; i<=15; i++){
-    const random = getRandomNumber(1, 16, blacklist);
-console.log(random);
-}
+const RandomNumber = (count, max) => {
+    const blacklist = [];
+    while(blacklist.length < count){
+        const r = Math.floor(Math.random()*max+1);
+        if (blacklist.indexOf(r) === -1){
+            blacklist.push(r);
+        }
+    }
+    return blacklist;
+};
+
+const Bomb = RandomNumber(16,100);
+console.log(Bomb);
+
+
 
 
 
